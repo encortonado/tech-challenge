@@ -1,5 +1,6 @@
 package br.com.fiap.tech.challenge.infrastucture.handler;
 
+import br.com.caelum.stella.validation.InvalidStateException;
 import br.com.fiap.tech.challenge.domain.value_objects.enums.ECategoria;
 import br.com.fiap.tech.challenge.infrastucture.exceptions.CustomErrorTypeException;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class GlobalExceptionHandler {
             case "Produto nao encontrado.":
                 status = HttpStatus.NOT_FOUND;
                 break;
+            case "Cliente nao encontrado.":
+                status = HttpStatus.NOT_FOUND;
+                break;
+            case "Cliente com dado CPF ja cadastrado":
+                status = HttpStatus.BAD_REQUEST;
+                break;
             default:
                 status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
@@ -36,4 +43,15 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, status);
 
     }
-}
+
+    @ExceptionHandler(InvalidStateException.class)
+    public ResponseEntity<?> handleCpfException(InvalidStateException exception) {
+
+        Map<String, Object> body = new HashMap<>();
+
+        body.put("message", exception.getMessage());
+
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
+    }
