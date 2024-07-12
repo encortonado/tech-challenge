@@ -54,7 +54,7 @@ public class ClienteService implements IClienteService {
     }
 
 
-    public void validaCPF(String cpf) {
+    private void validaCPF(String cpf) {
 
         CPFValidator cpfValidator = new CPFValidator();
         cpfValidator.assertValid(cpf);
