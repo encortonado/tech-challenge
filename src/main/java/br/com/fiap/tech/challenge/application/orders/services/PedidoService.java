@@ -4,11 +4,13 @@ import br.com.fiap.tech.challenge.adapter.entrypoint.api.model.PedidoDTO;
 import br.com.fiap.tech.challenge.adapter.entrypoint.api.model.PedidoInputDTO;
 import br.com.fiap.tech.challenge.adapter.entrypoint.persistance.PedidoRepository;
 import br.com.fiap.tech.challenge.application.clients.services.ClienteService;
-import br.com.fiap.tech.challenge.application.orders.entities.AtualizaStatusPedidoDTO;
-import br.com.fiap.tech.challenge.application.orders.entities.AtualizaStatusPedidoOutputDTO;
+import br.com.fiap.tech.challenge.application.payment.entities.AtualizaStatusPedidoDTO;
+import br.com.fiap.tech.challenge.application.payment.entities.AtualizaStatusPedidoOutputDTO;
 import br.com.fiap.tech.challenge.application.orders.entities.PedidoEntity;
 import br.com.fiap.tech.challenge.application.orders.entities.PedidoProdutoEntity;
 import br.com.fiap.tech.challenge.application.orders.ports.IPedidoUseCases;
+import br.com.fiap.tech.challenge.application.payment.entities.FaturaEntity;
+import br.com.fiap.tech.challenge.application.payment.services.PagamentoService;
 import br.com.fiap.tech.challenge.application.products.entities.ProdutoEntity;
 import br.com.fiap.tech.challenge.application.products.services.ProdutoService;
 import br.com.fiap.tech.challenge.domain.value_objects.enums.EStatus;
@@ -30,11 +32,13 @@ public class PedidoService implements IPedidoUseCases {
     private final ProdutoService produtoService;
 
     private final ClienteService clienteService;
+    private final PagamentoService pagamentoService;
 
-    public PedidoService(PedidoRepository pedidoRepository, ProdutoService produtoService, ClienteService clienteService) {
+    public PedidoService(PedidoRepository pedidoRepository, ProdutoService produtoService, ClienteService clienteService, PagamentoService pagamentoService) {
         this.pedidoRepository = pedidoRepository;
         this.produtoService = produtoService;
         this.clienteService = clienteService;
+        this.pagamentoService = pagamentoService;
     }
 
     @Override
@@ -103,14 +107,21 @@ public class PedidoService implements IPedidoUseCases {
 
         pedidoToSave.getPedidoProduto().addAll(pedidoProdutos);
 
+
         PedidoEntity pedidoSaved = pedidoRepository.save(pedidoToSave);
 
-        sendToPayment();
+        FaturaEntity fatura = sendToPayment(
+                pedidoSaved.getCodigo().toString());
+
+        pedidoSaved.setFatura(fatura);
+
+        pedidoSaved = pedidoRepository.save(pedidoSaved);
+
         return pedidoSaved;
     }
 
-    private void sendToPayment() {
-        // enviar para app pagamentos
+    private FaturaEntity sendToPayment(String codigoPedido) {
+        return pagamentoService.criaFaturaPagamento(codigoPedido);
     }
 
 }

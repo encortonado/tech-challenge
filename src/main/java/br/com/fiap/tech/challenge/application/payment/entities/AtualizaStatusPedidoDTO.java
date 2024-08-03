@@ -1,4 +1,4 @@
-package br.com.fiap.tech.challenge.application.orders.entities;
+package br.com.fiap.tech.challenge.application.payment.entities;
 
 import br.com.fiap.tech.challenge.domain.value_objects.enums.EStatus;
 import lombok.Data;

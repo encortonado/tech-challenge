@@ -4,7 +4,7 @@ import br.com.fiap.tech.challenge.application.products.entities.ProdutoEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
 
 @Entity
 @Table(name = "pedido_produto")

@@ -1,5 +1,6 @@
 package br.com.fiap.tech.challenge.application.orders.entities;
 
+import br.com.fiap.tech.challenge.application.payment.entities.FaturaEntity;
 import br.com.fiap.tech.challenge.application.products.entities.ProdutoEntity;
 import br.com.fiap.tech.challenge.domain.value_objects.enums.EStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,6 +29,9 @@ public class PedidoEntity {
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<PedidoProdutoEntity> pedidoProduto = new ArrayList<>();
+
+    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    private FaturaEntity fatura;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataPedido;

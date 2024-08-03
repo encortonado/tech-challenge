@@ -2,8 +2,8 @@ package br.com.fiap.tech.challenge.adapter.entrypoint.api.controller;
 
 import br.com.fiap.tech.challenge.adapter.entrypoint.api.model.PedidoDTO;
 import br.com.fiap.tech.challenge.adapter.entrypoint.api.model.PedidoInputDTO;
-import br.com.fiap.tech.challenge.application.orders.entities.AtualizaStatusPedidoDTO;
-import br.com.fiap.tech.challenge.application.orders.entities.AtualizaStatusPedidoOutputDTO;
+import br.com.fiap.tech.challenge.application.payment.entities.AtualizaStatusPedidoDTO;
+import br.com.fiap.tech.challenge.application.payment.entities.AtualizaStatusPedidoOutputDTO;
 import br.com.fiap.tech.challenge.application.orders.entities.PedidoEntity;
 import br.com.fiap.tech.challenge.application.orders.services.PedidoService;
 import br.com.fiap.tech.challenge.domain.value_objects.enums.EStatus;

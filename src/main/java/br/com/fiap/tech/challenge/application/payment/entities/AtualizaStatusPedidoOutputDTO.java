@@ -1,4 +1,4 @@
-package br.com.fiap.tech.challenge.application.orders.entities;
+package br.com.fiap.tech.challenge.application.payment.entities;
 
 import lombok.Data;
 
