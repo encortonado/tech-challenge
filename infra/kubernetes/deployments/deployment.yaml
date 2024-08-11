@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: challenge-deployment
+  # namespace: challenge
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: challenge
+  template:
+    metadata:
+      labels:
+        app: challenge
+    spec:
+      # restartPolicy: Always
+      containers:
+        - name: challenge-container
+          image: encortondo/fiap-challenge:0.0.2
+          ports:
+            - containerPort: 8080
+          command: ["java", "-jar", "app.jar"]
+          envFrom:
+            - configMapRef:
+                name: deployment-configmap
+
+

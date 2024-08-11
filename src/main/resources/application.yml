@@ -2,13 +2,14 @@ spring:
   application:
     name: challenge
   datasource:
-    url: jdbc:postgresql://localhost:5432/posfiap
+    url: ${DB_HOST}
     driver-class-name: org.postgresql.Driver
     username: posfiap
-    password: root
+    password: posfiap2
 
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
