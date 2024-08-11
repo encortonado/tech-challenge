@@ -73,7 +73,8 @@ $ mvn test
 ## 🚀 API's
 Essas são as requisições exemplificada no POSTMAN
 
-Segue a collection para baixar [Tech Challenge](./Tech Challenge in Java.postman_collection.json)
+Segue a collection para baixar e utiliza-la com Docker Compose: [Tech Challenge](./Tech Challenge in Java.postman_collection.json)
+e para Kubernetes: [Tech Challenge Kubernetes](./Tech Challenge in Java Kubernetes.postman_collection.json)
 
 Utilizamos a variável ```{{host_docker}} = http://localhost:8080``` que se refere a porta em que o docker está rodando
 

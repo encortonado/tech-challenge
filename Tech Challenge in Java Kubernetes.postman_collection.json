@@ -1,0 +1,684 @@
+{
+	"info": {
+		"_postman_id": "5169b00f-e7fd-4ffe-be9d-66b63da4d145",
+		"name": "Tech Challenge in Java Kubernetes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28339999"
+	},
+	"item": [
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Busca Produto por Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_kube}}/product?codigo_categoria=0",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "codigo_categoria",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Busca Produto por Categoria",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/product?codigo_categoria=0",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"key": "codigo_categoria",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 18:43:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"codigo\": 1,\n        \"nome\": \"Banana Cozida\",\n        \"descricao\": \"banana frita salgada teste\",\n        \"valor\": 12.99,\n        \"categoriaCodigo\": \"LANCHE\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Buscar Produto por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_kube}}/product/1",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buscar Produto por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/product/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"product",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 18:56:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"codigo\": 1,\n    \"nome\": \"Banana Cozida 2\",\n    \"descricao\": \"banana frita salgada teste\",\n    \"valor\": 12.99,\n    \"categoriaCodigo\": \"ACOMPANHAMENTO\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Criar Novo Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Banana Cozida 2\",\n    \"descricao\": \"banana frita salgada teste\",\n    \"valor\": 12.99,\n    \"categoriaCodigo\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_kube}}/product",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Criar Novo Produto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Banana Cozida 2\",\n    \"descricao\": \"banana frita salgada teste\",\n    \"valor\": 12.99,\n    \"categoriaCodigo\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/product",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"product"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Location",
+									"value": "/product/3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 18:52:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"codigo\": 3,\n    \"nome\": \"Banana Cozida 2\",\n    \"descricao\": \"banana frita salgada teste\",\n    \"valor\": 12.99,\n    \"categoriaCodigo\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualiza um Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigo\": 1,\n    \"nome\": \"Banana Cozida 1\",\n    \"descricao\": \"banana frita salgada teste\",\n    \"valor\": 12.99,\n    \"categoriaCodigo\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_kube}}/product",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Criar Novo Produto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Banana Cozida 2\",\n    \"descricao\": \"banana frita salgada teste\",\n    \"valor\": 12.99,\n    \"categoriaCodigo\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/product",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"product"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Location",
+									"value": "/product/3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 18:52:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"codigo\": 3,\n    \"nome\": \"Banana Cozida 2\",\n    \"descricao\": \"banana frita salgada teste\",\n    \"valor\": 12.99,\n    \"categoriaCodigo\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Deletar Produto por Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host_kube}}/product/1",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buscar Produto por Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/product/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"product",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jun 2024 18:56:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"codigo\": 1,\n    \"nome\": \"Banana Cozida 2\",\n    \"descricao\": \"banana frita salgada teste\",\n    \"valor\": 12.99,\n    \"categoriaCodigo\": \"ACOMPANHAMENTO\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Buscar Clientes por CPF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_kube}}/client/41099837898",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"client",
+								"41099837898"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro do Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cpf\": \"41099837898\", \n    \"email\": \"liadias914@email.com\",\n    \"nome\": \"Lia2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_kube}}/client",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"41099837898\", \r\n    \"email\": \"liadias914@email.com\",\r\n    \"nome\": \"Lia35\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_kube}}/client",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host_kube}}/client/41099837898",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"client",
+								"41099837898"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Criar Novo Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cpf\": \"41099837898\",\n    \"itemDePedido\": [\n        {\n            \"codigo\": 1,\n            \"quantidade\": 5\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_kube}}/order",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_kube}}/order",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Pedidos por Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_kube}}/order/0",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"order",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Status do Pedido",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_kube}}/order/1",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagamento",
+			"item": [
+				{
+					"name": "Verificar Pagamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host_kube}}/payment/status/c6183bff-e90e-4c88-a497-98380613c513",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"payment",
+								"status",
+								"c6183bff-e90e-4c88-a497-98380613c513"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Webhook Confirmar Pagamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "c2FuZHLDo2/DqW9jYXJh",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host_kube}}/payment/webhook/approve/c6183bff-e90e-4c88-a497-98380613c513",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"payment",
+								"webhook",
+								"approve",
+								"c6183bff-e90e-4c88-a497-98380613c513"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Webhook Rejeitar Pagamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "c2FuZHLDo2/DqW9jYXJh",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fatura_id\": \"12340.13615942591096708\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host_kube}}/payment/webhook/deny",
+							"host": [
+								"{{host_kube}}"
+							],
+							"path": [
+								"payment",
+								"webhook",
+								"deny"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host_kube",
+			"value": "localhost:80",
+			"type": "string"
+		}
+	]
+}
